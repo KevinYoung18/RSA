@@ -12,15 +12,23 @@ public class RSAGenKey
 	private BigInteger modulus;
 	
 	//main
-	public static void main(String[] args) throws IOException
+	public static void main(String[] args)
 	{
 		Scanner kb = new Scanner(System.in);
 		
-		RSAGenKey keygen = new RSAGenKey();
-		System.out.println("Enter path to save keys: ");
-		String pathName = kb.nextLine();
-		keygen.writeToFile(pathName);
-		System.out.println("Keys saved!");
+		try 
+		{
+			RSAGenKey keygen = new RSAGenKey();
+			System.out.println("Enter path to save keys: ");
+			String pathName = kb.nextLine();
+			keygen.writeToFile(pathName);
+			System.out.println("Keys saved!");
+		} 
+		catch (IOException e) 
+		{
+			System.out.println("Unable to write to file. Terminating program");
+		}
+		
 		kb.close();
 		
 	}
